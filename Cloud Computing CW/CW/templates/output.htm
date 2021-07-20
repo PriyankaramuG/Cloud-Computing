@@ -1,0 +1,58 @@
+{% extends "_base.htm" %}
+
+{% block title %}
+	Page 1
+{% endblock %}
+
+{% block pageblock %}
+<div id="outputform">
+    <h2>Output  Page.<br /></h2>
+    <p>A table showing  columns [resourceID, incircle and shots] which shows all the reporting (per Q). :&nbsp;</p>
+    <p>Scalable service={{scalservice}}; No.of resources={{NoResource}} ;Total shots={{shots}} ; Reporting rate={{rate}} ; No. of Digits={{nodigits}} ; No. of Rounds={{Noofrounds}}; Final D ={{FinalD}}&nbsp;</p>
+    <p>ElapsedTime  : {{ElapsedTime}} sec</p>
+    <p>Cost in USD  : ${{cost}} </p>
+    <br /><br />
+    <form id="outputform" method="post" action="/Termination">
+        <div class="up" style="text-align: right;">
+            <a class="backtoinput" href="input.htm">Reset - {{scalservice}}</a>
+            <input class="button" type="submit" name="Terminate Resources" value="Switch Off" />
+        </div>
+        <div class="divcont">
+            <div class="divcontchild">
+                <table border="1">
+                    {% for key,value in result.items() %}
+                    {% if key=='ResourceID' or key== 'incircle' or key == 'rate' or key == 'shots' or key=='pivalue' %}
+                    <tr>
+                        <td class="header">{{key}}</td>
+
+                        {% for value in result[key] %}
+                        <td>{{value}}</td>
+                        {% endfor %}
+                    </tr>
+                    {% endif%}
+                    {% endfor %}
+
+                </table>
+            </div>
+
+            <div class="divcontchild">
+                <img src="https://image-charts.com/chart?chco=5cb85c%2Cff0000&chd=t:{{ chartdata }}&chdl=estimates%7Cpi&chdlp=t&chls=1&chs=600x600&cht=ls&chxr=0%2C3.125%2C3.16&chxt=y" alt="Static Chart" />
+
+
+            </div>
+        </div>
+    </form>
+
+
+
+    {% if note %}
+    <h3 style="color: #B22222;font-size:14px">
+        {{ note }}
+    </h3>
+    {% endif %}
+
+
+
+</div>
+{% endblock %}
+

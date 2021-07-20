@@ -1,0 +1,68 @@
+<div id="initialize">
+
+    <p>Select the Scalable Service and No. of Resources  :&nbsp;</p><br />
+    <form id="initializeform" method="post" action="/initialisevalue">
+        <ul>
+            <li>
+                <label>Select Scalable Service:</label><select name="scalable" id="scalable">
+                    <option value="Lamda">Lamda</option>
+                    <option value="EC2">EC2</option>
+                </select>
+            </li>
+            <li><label>Enter the No. of Resources:</label><input type="text" name="resource" /></li>
+            <li>
+                <br />
+                <input class="button" type="submit" id="btnprovres" style="display:none" name="initilisepage" value="Provision Resources" />
+                <input class="button" type="submit" id="btnwarmup"  name="warmup" value="Warmup" formaction="/warmup" />
+                <input class="button" type="submit" id="btnsubmit" name="inputpage" value="Go To Input Page" />
+                <label id="lblmsg" style="display:none;color: #2435CD;font-size: 14px;font-weight:bold">Provision of resources in progress.....</label>
+                <label id="lblwarmmsg" style="color: #2435CD;font-size: 14px;font-weight:bold">{{lblwarmmsg}}</label>
+            </li>
+        </ul>
+    </form>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script>
+        $("#scalable").change(function () {
+            var selectedoption = $(this).children("option:selected").val();
+            if (selectedoption == "EC2") {
+                $("#btnprovres").show()
+                $("#btnsubmit").hide()
+                $("#noteheader").hide()
+                $("#btnwarmup").hide()
+                $("#lblwarmmsg").hide()
+                
+            }
+            else {
+                $("#btnprovres").hide()
+                $("#btnsubmit").show()
+                $("#btnwarmup").show()
+               
+
+            }
+
+        });
+        $("#btnprovres").click(function () {
+
+            $("#lblmsg").show()
+
+        });
+        $("#btnwarmup").click(function () {
+
+            $("#lblwarmmsg").show()
+
+        });
+
+    </script>
+
+    {% if note %}
+    <h3 id="noteheader" style="color: #B22222;font-size:14px">
+        {{ note }}
+    </h3>
+    {% endif %}
+</div>
+
+
+
+
+

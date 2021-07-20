@@ -1,0 +1,37 @@
+{% extends "_base.htm" %}
+
+{% block title %}
+	Page 1
+{% endblock %}
+
+{% block pageblock %}
+<div id="initialize">
+    
+    <h3 style="color: #2435CD;font-size: 14px;font-weight:bold">
+        {{ provnote }}
+    </h3>
+    
+    <h2>Input  Page.<br /></h2>
+    <p>Select the No. of Resources, Reporting Rate and Value of Digits to match  :&nbsp;</p><br />
+    <form id="inputform" method="post" action="/calculate">
+        <ul>
+
+            <li><label>Enter the No. of shots:</label><input type="text" name="shots" /></li>
+            <li><label>Enter the reporting rate :</label><input type="text" name="reportingrate" /></li>
+            <li><label>Enter the value of digits to match:</label><input type="text" name="digits" /></li>
+            <li><br /><input class="button" type="submit" name="inputpage" value="submit" /></li>
+        </ul>
+    </form>
+
+
+    {% if note %}
+    <h3 style="color: #B22222;font-size:14px">
+        {{ note }}
+    </h3>
+    {% endif %}
+
+
+
+</div>
+{% endblock %}
+

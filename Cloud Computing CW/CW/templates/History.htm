@@ -1,0 +1,41 @@
+{% extends "_base.htm" %}
+
+{% block title %}
+	Page 1
+{% endblock %}
+
+{% block pageblock %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-csv/0.71/jquery.csv-0.71.min.js"></script>
+
+<form id="History" method="POST" action="/History">
+	<input class="button" type="submit" id="btnsubmit" name="History" value="Click to load history" />
+
+	
+	<table border="1">
+		
+	
+		
+		{% for value in History %}
+		<tr>
+			<td>{{ value.Shots }}</td>
+			<td>{{ value.Reporting_Rate }}</td>
+			<td>{{ value.No_of_Resources }}</td>
+			<td>{{ value.Digits }}</td>
+			<td>{{ value.Pi_value }}</td>
+			<td>${{ value.cost }}</td>
+			<td>{{ value.runs }}</td>
+			<td>{{ value.TotalShots }}</td>
+			<td>{{ value.ScalableService }}</td>
+			
+
+
+		</tr>
+		{% endfor %}
+
+	</table>
+
+
+</form>
+
+
+	{% endblock %}
