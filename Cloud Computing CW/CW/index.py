@@ -27,9 +27,9 @@ queue = queue.Queue() # queue is synchronized, so caters for multiple threads
 #***************************************************************************************************
 import boto3
 import os
-image_id='ami-0891edf1f41388216'
-access_key='AKIAQQECLI6CMZTG2563'
-access_secret='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'
+image_id=''
+access_key=''
+access_secret=''
 
 os.environ['AWS_DEFAULT_REGION'] = 'us-east-1'
 # Above line needs to be here before boto3 to ensure file is read
