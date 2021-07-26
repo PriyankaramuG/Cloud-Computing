@@ -27,9 +27,9 @@ queue = queue.Queue() # queue is synchronized, so caters for multiple threads
 #***************************************************************************************************
 import boto3
 import os
-image_id=''
-access_key=''
-access_secret=''
+image_id='image_id'
+access_key='access_key'
+access_secret='access_secret'
 
 os.environ['AWS_DEFAULT_REGION'] = 'us-east-1'
 # Above line needs to be here before boto3 to ensure file is read
@@ -106,7 +106,7 @@ class ThreadUrl(threading.Thread):
 				
             #if the selection is lamda , execute below code which post the request to api gateway
 			elif  sc=="Lamda":
-				c = http.client.HTTPSConnection("0lzsxrn95l.execute-api.us-east-1.amazonaws.com")
+				c = http.client.HTTPSConnection("Lamda function URL")
 				json= '{ "key1": ' + str(shots) +','+' "key2": ' + str(rate) + '}'
 				c.request("POST", "/default/calculatepi", json)
 				lamdaresponse = c.getresponse()
